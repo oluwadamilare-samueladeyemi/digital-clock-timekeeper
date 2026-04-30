@@ -7,7 +7,6 @@ let timerInterval = null;
 
 // 🧠 CLOCK APP OBJECT
 const clockApp = {
-
   // 🔢 Add leading zero (5 → 05)
   formatNumber(num) {
     return num < 10 ? "0" + num : num;
@@ -46,8 +45,29 @@ const clockApp = {
   getDateString() {
     let now = this.getNow();
 
-    let days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-    let months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    let days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    let months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
 
     return `${days[now.getDay()]}, ${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
   },
@@ -65,13 +85,16 @@ const clockApp = {
     if (!alarmTime) return;
 
     let now = new Date();
-    let current = now.getHours() + ":" + now.getMinutes();
+    let current =
+      clockApp.formatNumber(now.getHours()) +
+      ":" +
+      clockApp.formatNumber(now.getMinutes());
 
     if (current === alarmTime) {
       alert("⏰ Alarm ringing!");
       alarmTime = null;
     }
-  }
+  },
 };
 
 // 🔁 Update clock every second
