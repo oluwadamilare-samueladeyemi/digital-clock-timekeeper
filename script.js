@@ -1,18 +1,18 @@
-// STATE VARIABLES
+//  STATE VARIABLES
 let is24HourFormat = true; // true = 24hr, false = 12hr
 let isDarkMode = true;
 
 let alarmTime = null; // stores alarm time
 let timerInterval = null;
 
-// CLOCK APP OBJECT
+//  CLOCK APP OBJECT
 const clockApp = {
-  // Add leading zero (5 → 05)
+  //  Add leading zero (5 → 05)
   formatNumber(num) {
     return num < 10 ? "0" + num : num;
   },
 
-  // Get current time (based on user's timezone)
+  //  Get current time (based on user's timezone)
   getNow() {
     return new Date(); // automatically uses system timezone
   },
@@ -33,7 +33,7 @@ const clockApp = {
       h = h % 12 || 12;
     }
 
-    // Format numbers
+    //  Format numbers
     h = this.formatNumber(h);
     m = this.formatNumber(m);
     s = this.formatNumber(s);
@@ -72,7 +72,7 @@ const clockApp = {
     return `${days[now.getDay()]}, ${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
   },
 
-  // Update UI
+  // 🖥 Update UI
   updateDisplay() {
     document.getElementById("clock-display").innerHTML = this.getTimeString();
     document.getElementById("date-display").innerText = this.getDateString();
@@ -80,7 +80,7 @@ const clockApp = {
     this.checkAlarm();
   },
 
-  // Check if alarm should ring
+  //  Check if alarm should ring
   checkAlarm() {
     if (!alarmTime) return;
 
@@ -100,7 +100,7 @@ const clockApp = {
 // Update clock every second
 setInterval(() => clockApp.updateDisplay(), 1000);
 
-// Initial load
+//  Initial load
 clockApp.updateDisplay();
 
 // Toggle 12/24 format
@@ -123,7 +123,7 @@ function setAlarm() {
   alert("Alarm set for " + input);
 }
 
-// ⏱TIMER FUNCTION
+//  TIMER FUNCTION
 function startTimer() {
   let seconds = parseInt(document.getElementById("timer-input").value);
 
