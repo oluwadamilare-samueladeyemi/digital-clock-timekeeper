@@ -18,7 +18,15 @@
         <!-- ⏰ Alarm -->
         <div class="feature">
             <input type="time" id="alarm-input">
+            <!-- 🎵 Tone Selector -->
+            <select id="alarm-tone">
+                <option value="tone1">Classic Bell</option>
+                <option value="tone2">Digital Beep</option>
+                <option value="tone3">Soft Chime</option>
+            </select>
+
             <button onclick="setAlarm()">Set Alarm</button>
+            <button onclick="stopAlarm()">Stop</button>
         </div>
 
         <!-- ⏱ Timer -->

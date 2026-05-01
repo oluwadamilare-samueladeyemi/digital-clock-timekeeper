@@ -1,3 +1,11 @@
+let alarmSound = null;
+
+const alarmTones = {
+  tone1: new Audio("https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3"),
+  tone2: new Audio("https://www.soundjay.com/button/sounds/beep-07.mp3"),
+  tone3: new Audio("https://www.soundjay.com/misc/sounds/chime-01.mp3"),
+};
+
 // 🌍 STATE VARIABLES
 let is24HourFormat = true; // true = 24hr, false = 12hr
 let isDarkMode = true;
@@ -91,7 +99,11 @@ const clockApp = {
       clockApp.formatNumber(now.getMinutes());
 
     if (current === alarmTime) {
-      alert("⏰ Alarm ringing!");
+      if (alarmSound) {
+        alarmSound.loop = true; // keeps ringing
+        alarmSound.play();
+      }
+
       alarmTime = null;
     }
   },
@@ -117,9 +129,13 @@ function toggleTheme() {
 // ⏰ SET ALARM
 function setAlarm() {
   const input = document.getElementById("alarm-input").value;
+  const selectedTone = document.getElementById("alarm-tone").value;
+
   if (!input) return alert("Select a valid time");
 
   alarmTime = input;
+  alarmSound = alarmTones[selectedTone];
+
   alert("Alarm set for " + input);
 }
 
@@ -145,4 +161,12 @@ function startTimer() {
       alert("⏱ Timer done!");
     }
   }, 1000);
+}
+
+// Stop Alarm Function
+function stopAlarm() {
+  if (alarmSound) {
+    alarmSound.pause();
+    alarmSound.currentTime = 0;
+  }
 }
