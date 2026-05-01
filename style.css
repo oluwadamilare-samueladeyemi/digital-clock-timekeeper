@@ -17,7 +17,8 @@ body {
   text-align: center;
   padding: 30px 50px;
   border-radius: 20px;
-
+  max-width: 500px;
+  width: 100%;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
 
@@ -73,7 +74,7 @@ body {
 /* Light mode panel */
 body.light-mode .clock-container {
   background: rgba(0, 0, 0, 0.05);
-  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
 /* Light mode button */
@@ -90,7 +91,6 @@ body.light-mode button {
 
 /* 📱 Mobile Optimization */
 @media (max-width: 600px) {
-
   .clock-container {
     padding: 20px;
     width: 90%;
